@@ -16,7 +16,7 @@
         "order": 1,
         "title": "Digital Alpha Limited Partner Dashboard",
 
-        "action": { "caption": "Get Started", "link": "hello", "hint": "Click here to get started with your LP Account" },
+        "action": { "caption": "Get Started", "link": "chat", "hint": "Click here to get started with your LP Account" },
 
         "animation": { "name": "landing" }
       },

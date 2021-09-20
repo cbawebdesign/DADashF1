@@ -233,7 +233,9 @@ export class LoginComponent {
         // Tracks the activity with analytics
         this.gtag.login(user?.providerId);
         // Closes the dialog 
-        this.ref.close(user);    
+        this.ref.close(user)
+        this.navigate('chat')
+        ;    
       })
       // Dispays the error code, eventually
       .catch( error => this.showError(error.code) );
@@ -248,7 +250,9 @@ export class LoginComponent {
         // Creates the new user user if needed, keeps the existing one otherwise 
         this.user.register(user)
           // Closes the dialog returning the user
-          .then( () => this.ref.close(user) );
+          .then( () => this.ref.close(user) 
+          );
+
       })
       // Dispays the error code, eventually
       .catch( error => this.showError(error.code) );
@@ -322,7 +326,7 @@ export class LoginComponent {
     this.auth.reauthenticate(password)
       .then( user => {
         // Navigates home first
-        this.navigate('/')
+        this.navigate('chat')
           // Deletes the user user first 
           .then( () => this.user.delete() )
           // Deletes the user object next

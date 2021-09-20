@@ -14,6 +14,7 @@
 
     "navbar": {
         "public": [
+
      
         ],
         "private": [
@@ -23,7 +24,8 @@
     },
     "menu": {
         "public": [
-         
+                { "label": "Chat", "link": "docs" },
+
             { "label": "Register/Sign-in", "link": "login", "params": { "mode": "signIn" } }
         ],
         "private": [
