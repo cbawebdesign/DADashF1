@@ -5,7 +5,7 @@
     "message": { "caption": "Message", "icon": "far:fa-comment" }
   },
 
-  "location": { "caption": "Location", "icon": "fas:fa-map-marker-alt", "placeholder": "Planet Earth" },
+  "location": { "caption": "Location", "icon": "fas:fa-folder-open", "placeholder": "Digital Alpha Fund" },
 
-  "bio": { "caption": "Bio", "icon": "far:fa-comment", "placeholder": "Searching for widzm" }
+  "bio": { "caption": "Bio", "icon": "far:fa-comment", "placeholder": "Limited Partner Dashboard" }
 }

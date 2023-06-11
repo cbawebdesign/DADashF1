@@ -4,6 +4,9 @@
 
 Welcome to the Digital Alpha Limited Partner Dashboard
 
+
+![Routing Diagram](assets/img/loader.gif)
+
 <!-- * [Material Design](https://material.io) as the design and styling system backed by the [Angular Material](https://material.angular.io) package. This includes the [Component Dev Kit (CDK)](https://material.angular.io/cdk) to implement common interaction patterns. Additionally, the [Font Awsome](https://fontawesome.com) icons are widely used to complement the essential [Material Icon set](https://material.io/resources/icons). -->
 <!-- * [Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox) is the main layout system to ensure a smooth and responsive navigation thank to the help of the [Angular Layout](https://github.com/angular/flex-layout/wiki) package.
 * [Firebase](https://firebase.google.com) as the primary backend. Wizdm was born as a serverless application, so, it is likely to stay that way althougt contributions to expand its backend capabilities are more than welcome.

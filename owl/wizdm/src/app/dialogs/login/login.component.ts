@@ -8,8 +8,9 @@ import { UserProfile } from 'app/utils/user';
 import { $animations } from './login-animations';
 import type { ActionData } from '@wizdm/actionlink';
 import { Router } from '@angular/router';
+import { throwIfEmpty } from 'rxjs/operators';
 
-export type loginAction = 'social'|'register'|'signIn'|'forgotPassword'|'resetPassword'|'changePassword'|'sendEmailVerification'|'verifyEmail'|'recoverEmail'|'changeEmail'|'delete';
+export type loginAction = 'phone'|'social'|'register'|'signIn'|'forgotPassword'|'resetPassword'|'changePassword'|'sendEmailVerification'|'verifyEmail'|'recoverEmail'|'changeEmail'|'delete';
 
 export interface LoginData extends ActionData { 
   mode?: loginAction;
@@ -102,6 +103,11 @@ export class LoginComponent {
       this.form.addControl('password', this.password);      
       break;
 
+      case 'phone':
+        this.form.addControl('email', this.email);
+        this.form.addControl('password', this.password);      
+        break;
+
       case 'forgotPassword':
       this.form.addControl('email', this.email);
       break;
@@ -162,6 +168,10 @@ export class LoginComponent {
     switch(action) {
 
       case 'signIn':
+      this.signIn( this.email.value, this.password.value );
+      break;
+
+      case 'phone':
       this.signIn( this.email.value, this.password.value );
       break;
 
@@ -234,12 +244,13 @@ export class LoginComponent {
         this.gtag.login(user?.providerId);
         // Closes the dialog 
         this.ref.close(user)
-        this.navigate('chat')
+        this.navigate('docs')
         ;    
       })
       // Dispays the error code, eventually
       .catch( error => this.showError(error.code) );
   }
+  
 
   public signInWith(provider: string) { 
     // Signing-in with a provider    
@@ -291,9 +302,13 @@ export class LoginComponent {
     
     this.auth.confirmPasswordReset(code, newPassword)
       // Closes the dialog returning null
-      .then( () => this.ref.close(null) )
+      // .then( () => this.ref.close(null) )
+      this.navigate('docs')
+      
+
       // Dispays the error code, eventually
       .catch( error => this.showError(error.code) );
+;
   }
   
   private updateEmail(password: string, newEmail: string) {

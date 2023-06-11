@@ -1,9 +1,19 @@
 import { FormGroup, FormControl, AbstractControl, Validators, ValidationErrors } from '@angular/forms';
 import { Component, OnDestroy, Output, EventEmitter, Input } from '@angular/core';
-import { Observable, Subscription, BehaviorSubject, of } from 'rxjs';
-import { map, take, debounceTime, switchMap } from 'rxjs/operators';
+import { Observable, Subscription, BehaviorSubject, of, from } from 'rxjs';
+import { map, take, debounceTime, switchMap, tap } from 'rxjs/operators';
 import { UserProfile, UserData } from 'app/utils/user';
 import moment, { defaultFormat, Moment } from 'moment';
+import * as IronWeb from "@ironcorelabs/ironweb";
+
+// initialize ironweb sdk
+const getJwt = async () => {
+  const resp = await fetch(
+    "https://us-central1-test7-8a527.cloudfunctions.net/generateJwt"
+  );
+  const text = await resp.text();
+  return text;
+};
 
 @Component({
   selector: 'wm-profile-form',
@@ -52,6 +62,103 @@ export class ProfileFormComponent extends FormGroup implements OnDestroy {
     });
   }
 
+  //changes
+  // ngOnInit() {
+  //   // decrypt last name
+  //   const documentByte = new Uint8Array(atob(this.user.data.email).split("").map((c) => c.charCodeAt(0)));
+  //   const documentBytes = new Uint8Array(atob(this.user.data.lastName).split("").map((c) => c.charCodeAt(0)));
+
+  //   IronWeb.initialize(getJwt, () => Promise.resolve("testpassword")).then(() => {
+    
+
+  //       IronWeb.document.getDocumentIDFromBytes(documentByte).then(
+  //         (documentId) => IronWeb.document.decrypt(documentId, documentByte)
+  //       ).then(
+  //         (emailDecrypted) => {
+  //           const email = IronWeb.codec.utf8.fromBytes(emailDecrypted.data);
+  //           this.patchValue({ ...this.data, email});
+        
+  //           IronWeb.document.getDocumentIDFromBytes(documentBytes).then(
+  //             (documentId) => IronWeb.document.decrypt(documentId, documentBytes)
+  //           ).then(
+  //       (lastNameDecrypted) => {
+  //         const lastName = IronWeb.codec.utf8.fromBytes(lastNameDecrypted.data);
+  //         this.patchValue({ ...this.data, lastName});
+        
+  
+  //       });
+
+  //     });
+  //   });
+  // }
+
+
+  ngOnInit() {
+    // decrypt last name
+    const documentByte = new Uint8Array(atob(this.user.data.email).split("").map((c) => c.charCodeAt(0)));
+    // const documentBytes = new Uint8Array(atob(this.user.data.lastName).split("").map((c) => c.charCodeAt(0)));
+    // const lastNameP = IronWeb.initialize(getJwt, () => Promise.resolve("testpassword")).then(() => {
+    //   IronWeb.document.getDocumentIDFromBytes(documentBytes).then(
+    //     (documentId) => IronWeb.document.decrypt(documentId, documentBytes)
+    //   ).then(
+    //     (lastNameDecrypted) => {
+    //       const lastName = IronWeb.codec.utf8.fromBytes(lastNameDecrypted.data);
+    //       this.patchValue({ ...this.data, lastName});
+
+    // decrypt last name
+   IronWeb.initialize(getJwt, () => Promise.resolve("testpassword")).then(() => {
+      IronWeb.document.getDocumentIDFromBytes(documentByte).then(
+        (documentId) => IronWeb.document.decrypt(documentId, documentByte)
+      ).then(
+        (emailDecrypted) => {
+          const email = IronWeb.codec.utf8.fromBytes(emailDecrypted.data);
+          this.patchValue({ ...this.data, email});
+        });
+    });
+  // });
+
+  // });
+
+  }
+  // ngAfterViewInit()	{
+  //   const documentBytes = new Uint8Array(atob(this.user.data.lastName).split("").map((c) => c.charCodeAt(0)));
+  //   IronWeb.initialize(getJwt, () => Promise.resolve("testpassword")).then(() => {
+
+  //     IronWeb.document.getDocumentIDFromBytes(documentBytes).then(
+  //       (documentId) => IronWeb.document.decrypt(documentId, documentBytes)
+  //     ).then(
+  //       (lastNameDecrypted) => {
+  //         const lastName = IronWeb.codec.utf8.fromBytes(lastNameDecrypted.data);
+  //         this.patchValue({ ...this.data, lastName});
+
+  //       });
+  //     });
+
+  //     }
+  // test(){
+  //   const documentBytes = new Uint8Array(atob(this.user.data.lastName).split("").map((c) => c.charCodeAt(0)));
+
+  //   IronWeb.initialize(getJwt, () => Promise.resolve("testpassword")).then(() => {
+    
+
+  //       IronWeb.document.getDocumentIDFromBytes(documentBytes).then(
+  //         (documentId) => IronWeb.document.decrypt(documentId, documentBytes)
+  //       ).then(
+  //         (emailDecrypted) => {
+  //           const email = IronWeb.codec.utf8.fromBytes(emailDecrypted.data);
+  //           this.patchValue({ ...this.data, email});
+        
+        
+  //       (lastNameDecrypted) => {
+  //         const lastName = IronWeb.codec.utf8.fromBytes(lastNameDecrypted.data);
+  //         this.patchValue({ ...this.data, lastName});
+        
+  
+  //       };
+
+  //     });
+  //   });
+  // }
   ngOnDestroy() { this.sub.unsubscribe(); }
 
   private format(value: any): UserData {
@@ -87,7 +194,7 @@ export class ProfileFormComponent extends FormGroup implements OnDestroy {
     const birth = value.birth ? moment(value.birth, defaultFormat) : null;
 
     // Replaces the old 'motto' with the new 'bio' field
-    if((value as any).motto && !value.bio) { value.bio = (value as any).motto; }
+    if(value.motto && !value.bio) { value.bio = value.motto; }
 
     // Keeps track of the original input data
     this.data = value;

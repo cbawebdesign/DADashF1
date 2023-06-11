@@ -27,15 +27,21 @@ const routes: RoutesWithContent = [
       { path: 'feed',   loadChildren: () => import('./feed/feed.module').then(m => m.FeedModule) },
       { path: 'people', loadChildren: () => import('./people/people.module').then(m => m.PeopleModule) },
       { path: 'groups', loadChildren: () => import('./groups/groups.module').then(m => m.GroupsModule) },
-      { path: 'newsletterq1', loadChildren: () => import('./newsletterq1/newsletterq1.module').then(m => m.newsletterq1Module) },
-      { path: 'newsletterq2', loadChildren: () => import('./newsletterq2/newsletterq2.module').then(m => m.newsletterq2Module) },
-      { path: 'newsletterq3', loadChildren: () => import('./newsletterq3/newsletterq3.module').then(m => m.newsletterq3Module) },
-      { path: 'newsletterq4', loadChildren: () => import('./newsletterq4/newsletterq4.module').then(m => m.newsletterq4Module) },
+      { path: 'q12022', loadChildren: () => import('./newsletterq1/newsletterq1.module').then(m => m.newsletterq1Module) },
+      { path: 'q22022', loadChildren: () => import('./newsletterq2/newsletterq2.module').then(m => m.newsletterq2Module) },
+      { path: 'communications', loadChildren: () => import('./communications/communications.module').then(m => m.CommunicationsModule) },
+      { path: 'communicationsone', loadChildren: () => import('./communicationsone/communicationsone.module').then(m => m.CommunicationsoneModule) },
+      { path: 'newcommunication', loadChildren: () => import('./newcommunication/newcommunication.module').then(m => m.NewcommunicationModule) },
+
+      { path: 'capitalaccount2022', loadChildren: () => import('./newsletterq3/newsletterq3.module').then(m => m.newsletterq3Module) },
+      { path: 'distribution2022', loadChildren: () => import('./newsletterq4/newsletterq4.module').then(m => m.newsletterq4Module) },
       { path: 'k12017', loadChildren: () => import('./k12018/k12018.module').then(m => m.k12018Module) },
       { path: 'k12018', loadChildren: () => import('./k12018/k12018.module').then(m => m.k12018Module) },
       { path: 'k12019', loadChildren: () => import('./k12019/k12019.module').then(m => m.k12019Module) },
       { path: 'k12020', loadChildren: () => import('./k12020/k12020.module').then(m => m.k12020Module) },
       { path: 'k12021', loadChildren: () => import('./k12021/k12021.module').then(m => m.k12021Module) },
+      { path: 'k12022', loadChildren: () => import('./k12022/k12022.module').then(m => m.k12022Module) },
+
       { path: 'q22018', loadChildren: () => import('./q22018/q22018.module').then(m => m.q22018Module) },
       { path: 'q22017', loadChildren: () => import('./q22017/q22017.module').then(m => m.q22017Module) },
       { path: 'q22019', loadChildren: () => import('./q22019/q22019.module').then(m => m.q22019Module) },
@@ -46,6 +52,16 @@ const routes: RoutesWithContent = [
       { path: 'q32019', loadChildren: () => import('./q32019/q32019.module').then(m => m.q32019Module) },
       { path: 'q32020', loadChildren: () => import('./q32020/q32020.module').then(m => m.q32020Module) },
       { path: 'q32021', loadChildren: () => import('./q32021/q32021.module').then(m => m.q32021Module) },
+      { path: 'q32022', loadChildren: () => import('./q32022/q32022.module').then(m => m.q32022Module) },
+      { path: 'q42022', loadChildren: () => import('./q42022/q42022.module').then(m => m.q42022Module) },
+
+
+      { path: 'cas21q4', loadChildren: () => import('./cas21q4/cas21q4.module').then(m => m.Cas21q4Module) },
+
+      { path: 'cas22q1', loadChildren: () => import('./cas22q1/cas22q1.module').then(m => m.Cas22q1Module) },
+      { path: 'cas22q2', loadChildren: () => import('./cas22q2/cas22q2.module').then(m => m.Cas22q2Module) },
+      { path: 'cas22q3', loadChildren: () => import('./cas22q3/cas22q3.module').then(m => m.Cas22q3Module) },
+      { path: 'cas22q4', loadChildren: () => import('./cas22q4/cas22q4.module').then(m => m.Cas22q4Module) },
 
       { path: 'q42017', loadChildren: () => import('./q42017/q42017.module').then(m => m.q42017Module) },
       { path: 'q42018', loadChildren: () => import('./q42018/q42018.module').then(m => m.q42018Module) },

@@ -1,4 +1,4 @@
-import { ContentRouterModule, RoutesWithContent } from '@wizdm/content';
+import { ContentRouterModule, RoutesWithContent,  } from '@wizdm/content';
 import { BackLinkObserver, LogoutLinkObserver, CloseLinkObserver, WelcomeBack } from './utils';
 import { matchUserNameOnly } from 'app/pages/profile/matcher';
 import { matchFullPath } from 'app/pages/static/static-matcher';
@@ -28,7 +28,8 @@ const routes: RoutesWithContent = [
     content: 'navigator',
     
     children: [
-
+      // { path: 'consent', loadChildren: () => import('../dialogs/consent/consent.module').then(m => m.ConsentModule), canActivate: [ LazyDialogLoader ] },
+      // { path: 'ask-consent', redirectTo: 'consent', pathMatch: 'full' }, 
       // Not found page
       { path: 'not-found', loadChildren: () => import('../pages/not-found/not-found.module').then(m => m.NotFoundModule) },
       { path: '404', redirectTo: 'not-found', pathMatch: 'full' },
@@ -41,7 +42,7 @@ const routes: RoutesWithContent = [
       
       // Content browsing
       { path: 'explore', loadChildren: () => import('../pages/explore/explore.module').then(m => m.ExploreModule) },
-      { path: 'welcome-back', redirectTo: 'explore', pathMatch: 'full' }, 
+      { path: 'welcome-back', redirectTo: 'docs/start', pathMatch: 'full'}, 
 
       // Instant messaging
       { path: 'chat', loadChildren: () => import('../pages/chat/chat.module').then(m => m.ChatModule) },

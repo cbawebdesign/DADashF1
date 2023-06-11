@@ -111,7 +111,7 @@
     "title": "Unsaved changes",
     "message": "If you leave now, changes won't be saved",
     "cancel": "Stay",
-    "force": "Save and leave",
-    "ok": "Leave anyhow"
+    
+    "ok": "Save and Leave"
   }
 }

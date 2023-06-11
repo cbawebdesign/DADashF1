@@ -48,8 +48,7 @@
         ],
       
         "links": [
-            { "label": "Terms of service", "link": "terms" },
-            { "label": "Contact us", "link": "contact" }
+            { "label": "Terms of service", "link": "terms" }
         ],
       
         "languages": [

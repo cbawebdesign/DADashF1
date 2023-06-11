@@ -41,6 +41,7 @@ export class UserProfile<T extends UserData = UserData> extends DatabaseCollecti
   /** Current user profile snapshot */
   private snapshot: T = {} as T;
   private sub: Subscription;
+  multiFactor: any;
 
   /** The authenticated user's id */
   public get uid(): string { return this.auth.userId; } 

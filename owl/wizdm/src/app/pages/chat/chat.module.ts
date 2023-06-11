@@ -39,7 +39,7 @@ const routes: RoutesWithContent = [
     path: '',
     content: ['chat', 'emoji-keys'],
     component: ChatComponent,
-    canActivate: [ AuthGuard, ValidProfile, ChatService ], data: { authGuardPipe: emailVerified },
+    canActivate: [ AuthGuard, ValidProfile ], data: { authGuardPipe: emailVerified },
     canDeactivate: [ CanLeaveGuard ]
   }
 ];

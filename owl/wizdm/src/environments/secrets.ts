@@ -5,7 +5,7 @@ import { GtagConfig } from '@wizdm/gtag';
 // Defines global secret environment variables
 export const secrets = {
 
-  rootEmail: '<< your root access email goes here >>',
+  rootEmail: 'chris@cbawebdesign.com',
 
   // We use the test key while in development, live key for production
   stripeTestKey: '<< your pk_test_... key goes here >>',

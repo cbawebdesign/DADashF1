@@ -19,6 +19,44 @@
 //   }
 // }
 
-.new {
-  padding-top: 55px;
-}
+// .new {
+//   padding-top: 55px;
+//   border-color: blue;
+// }
+// .ahh{
+//   background-color: rgb(167, 167, 179);
+// }
+// .input {
+//   text-emphasis-color: aqua;
+//   background-color:#ceced8;
+// }
+// .new {
+//     padding-top: 55px;
+//     border-color: rgb(200, 200, 231);
+//   }
+//   .ahh{
+//     background-color: rgb(200, 200, 231);
+//   }
+//   .input {
+//     text-emphasis-color: aqua;
+//     background-color:rgb(200,200, 231);
+//   }
+
+
+:host {
+
+    position: relative;
+    width: 100%;
+  
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    
+    div { padding: 25px; }
+  
+    p { text-align: justify; }
+  
+    button { margin: 16px 0; }
+  }

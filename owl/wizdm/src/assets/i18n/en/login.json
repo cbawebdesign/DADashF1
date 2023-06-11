@@ -13,15 +13,20 @@
     "social": {
       "title": "Digital Alpha LP Dashboard",
       "message": "Sign-In with your e-mail",
-      "instructions": "You can also [register](register) with your email or, if already registered, [sign-in](signIn)."
+      "instructions": "Please [register](register) [sign-in](signIn) with your registered email."
     },
     "register": {
       "title": "Register with your email",
-      "message": "Welcome to *Wizdm*.\nAs a registered users you'll get unrestricted access to all the features",
+      "message": "Welcome to *Digital Alpha LP Dash*.\nAs a registered users you'll get unrestricted access to all the features",
       "instructions": "Already have login and password? [Sign-in](signIn).",
       "caption": "Register with my email"
     },
     "signIn": {
+      "title": "Sign-in with your email",
+      "message": "Please sign-in to view fund documents",
+      "caption": "Sign-in with my email"
+    },
+    "phone": {
       "title": "Sign-in with your email",
       "message": "Please sign-in to view fund documents",
       "caption": "Sign-in with my email"

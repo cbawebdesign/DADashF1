@@ -6,6 +6,7 @@ import { BackgroundObservable } from 'app/utils/background';
 import { DarkModeObserver } from 'app/utils/platform';
 import { Observable, Subscription } from 'rxjs';
 import { NgStyle } from '@angular/common';
+import { environment } from 'env/environment';
 
 @Component({
   selector: 'body',
@@ -32,6 +33,9 @@ export class AppComponent extends NgStyle implements OnDestroy {
   private sub: Subscription;
   
   public darkMode: boolean;
+  cookieMessage: string;
+  cookieDismiss: any;
+  cookieLinkText: any;
 
   constructor(background$: BackgroundObservable, private darkMode$: DarkModeObserver, el: ElementRef, diffs: KeyValueDiffers, renderer: Renderer2, router: Router) {
 
@@ -60,7 +64,27 @@ export class AppComponent extends NgStyle implements OnDestroy {
       takeWhile( value => value, true)
     );
   }
-
+  ngOnInit() {
+  let cc = window as any;
+  cc.cookieconsent.initialise({
+    palette: {
+      popup: {
+        background: "#164969"
+      },
+      button: {
+        background: "#ffe000",
+        text: "#164969"
+      }
+    },
+    theme: "classic",
+    content: {
+      message: "We use our own and third-party cookies to personalize content and to analyze web traffic.",
+      dismiss: "Accept Cookies",
+      link: this.cookieLinkText,
+      // href: environment.Frontend + "/dataprivacy" 
+    }
+  });
+}
   // Disposes of the subscription
   ngOnDestroy() { this.sub.unsubscribe(); }
 }

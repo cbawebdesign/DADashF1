@@ -39,9 +39,9 @@ export class q42021Component extends DatabaseGroup<PostData> {
 
       // Query for the public posts in descending order by creation date
       // where('users', 'array-contains', this.user.uid),
-      where('users', 'array-contains', this.user.data.email),
+      where('users', 'array-contains', this.user.data.userName),
 
-      where('categories', '==', 'Financials Q4-2021'),
+      where('categories', '==', 'Financials Q4-2022'),
 
 
       // Custom operator

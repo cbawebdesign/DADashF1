@@ -10,6 +10,8 @@ import { UserProfile, UserData } from 'app/utils/user';
 import * as IronWeb from "@ironcorelabs/ironweb";
 import { PdfViewerComponent } from 'ng2-pdf-viewer';
 import WebViewer from '@pdftron/webviewer';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 
 export interface PostData extends DocumentData {
   channel?: string;
@@ -37,12 +39,15 @@ export class PostComponent  extends DatabaseDocument<PostData>  implements OnIni
 
   private _favorite$ = new BehaviorSubject<boolean>(false);  
   private likers: DatabaseCollection<any>;
-  
+  public page = 1;
+ 
+  public pageLabel!: string;
   public favorite$: Observable<boolean>;
   public likes: DistributedCounter;
   public data: PostData;
   newdata: string;
-
+  newtext: string;
+  newdatab: string;
   renderText = true;
   originalSize = false;
   fitToPage = false;
@@ -84,36 +89,39 @@ export class PostComponent  extends DatabaseDocument<PostData>  implements OnIni
         this.newdata = decryptedtext;
 
 
-
-    WebViewer({
-      path: '../assets/lib',
-      initialDoc: this.newdata
-
-    }, this.viewer.nativeElement).then(instance => {
-      this.wvInstance = instance;
-
-      // now you can access APIs through this.webviewer.getInstance()
-      instance.openElements(['notesPanel']);
-      // see https://www.pdftron.com/documentation/web/guides/ui/apis for the full list of APIs
-
-      // or listen to events from the viewer element
-      this.viewer.nativeElement.addEventListener('pageChanged', (e) => {
-        const [ pageNumber ] = e.detail;
-        console.log(`Current page is ${pageNumber}`);
-      });
-
-      // or from the docViewer instance
-      instance.docViewer.on('annotationsLoaded', () => {
-        console.log('annotations loaded');
-      });
-
-      instance.docViewer.on('documentLoaded', this.wvDocumentLoadedHandler)
-    })
+     
+   
   });
+  
+  const encryptedimage = new Uint8Array(atob(this.data.image).split("").map((c) => c.charCodeAt(0)));
+    
+  IronWeb.document.getDocumentIDFromBytes(encryptedimage).then(
+    (documentId) => IronWeb.document.decrypt(documentId, encryptedimage)
+  ).then(
+    (decryptedpostdata) => {
+      const decryptedtext = IronWeb.codec.utf8.fromBytes(decryptedpostdata.data);
+      console.log(decryptedtext);
+      this.newdatab = decryptedtext;
+      
+      
+      const newtext = this.data.test;
+      this.newtext = newtext;
+
+});
 
   }
 
+  
 
+  saveit() {
+    let url = this.newdata; 
+    // window.open(url, '_blank');
+    setTimeout(() => {
+      console.log(url);
+      window.open(url);
+    }, 1000);
+
+}
   constructor(db: DatabaseService, private auth: AuthService, private user: UserProfile<UserData>) { 
     super(db)
   }
@@ -204,6 +212,7 @@ export class PostComponent  extends DatabaseDocument<PostData>  implements OnIni
     return this.user.data.photo || '';
   }
 
+
   public get userFirstName(): string {
     let displayName = this.user?.data?.userName?.split('-').slice().pop();
     return displayName || '';
@@ -227,4 +236,8 @@ export class PostComponent  extends DatabaseDocument<PostData>  implements OnIni
 }
 
 
+
+function saveit() {
+  throw new Error('Function not implemented.');
+}
 

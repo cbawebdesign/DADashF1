@@ -8,7 +8,8 @@ import { PostCardModule } from '../post-card/post-card.module';
   imports: [ 
     CommonModule,
     FlexLayoutModule,
-    PostCardModule
+    PostCardModule,
+
   ],
   declarations: [ PostComponent ],
   exports: [ PostComponent ],

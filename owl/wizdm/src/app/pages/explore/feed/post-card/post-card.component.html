@@ -33,22 +33,28 @@
     <a mat-button color="primary">{{ data?.channel || 'Digital Alpha Advisors LLC' }}</a>
 
     <time class="time">{{ data?.updated | moment:'ll' }}</time>
+    <time class="time">{{ data?.test | moment:'ll' }}</time>
 
   </div>
 
   <!-- Content -->
-  <article fxFlex="1 1 auto" fxLayout="column">
+  <article fxFlex="1 1 auto" class="newest" fxLayout="column">
 
       <!-- <img src="assets/img/DA1.png"
       class="img" width="500" height="250" href="#" > -->
   
-      <h2>{{ data?.image }}</h2>
+      <h2 style="color: #000080" class="newer">{{ this.newdata }}</h2>
   
    <!-- <a (click)="(decryptedtext)">View Document</a> -->
    <!-- <a (click)="downloadDecrypt()">View Document</a> -->
 
    <!-- <a href="{{newdata}}">View Document</a> -->
-
+   <!-- <iframe id="Example"
+   title="Example"
+   width="1900"
+   height="1900"
+   src="https://firebasestorage.googleapis.com/v0/b/test7-8a527.appspot.com/o/posts%2Fin12bCAC3CrTRI25hS9V%2FDAF%20A%20-%202018%20-%20Q2%20-%20Financials%20(Final).pdf?alt=media&token=1200dbdf-9304-4cb6-8168-448f4e618050">
+ </iframe> -->
   </article>
 
 </div>
@@ -65,3 +71,12 @@
 <div>
   
 </div>
+
+<style>
+  .newer{
+    text-decoration: #000080;
+  }
+
+  /* .newest{
+  } */
+</style>

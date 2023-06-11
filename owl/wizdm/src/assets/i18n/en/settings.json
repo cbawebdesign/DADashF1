@@ -9,11 +9,7 @@
     "label": "Account",
     "link": "account"
   },
-  {
-    "icon": "fas:fa-cloud-upload-alt",
-    "label": "Uploads",
-    "link": "uploads"
-  },
+  
   {
     "icon": "fas:fa-sign-out-alt",
     "label": "SignOut",

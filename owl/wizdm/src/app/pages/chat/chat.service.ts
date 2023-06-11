@@ -7,6 +7,7 @@ import { UserProfile } from 'app/utils/user';
 import { ConversationData } from './chat-types';
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
+import { User } from '@wizdm/connect/auth';
 
 /** Redirects to the latest conversation, if any */
 @Injectable({

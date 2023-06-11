@@ -34,19 +34,19 @@ export class PostCardComponent implements OnInit {
 
   async  ngOnInit() {
 
-    await IronWeb.initialize(getJwt, () => Promise.resolve("testpassword"));
-    const encrypteddownloadurlbytes = new Uint8Array(atob(this.data.downloadURL).split("").map((c) => c.charCodeAt(0)));
+    // await IronWeb.initialize(getJwt, () => Promise.resolve("testpassword"));
+    // const encryptedimage = new Uint8Array(atob(this.data.image).split("").map((c) => c.charCodeAt(0)));
     
-    IronWeb.document.getDocumentIDFromBytes(encrypteddownloadurlbytes).then(
-      (documentId) => IronWeb.document.decrypt(documentId, encrypteddownloadurlbytes)
-    ).then(
-      (decryptedpostdata) => {
-        const decryptedtext = IronWeb.codec.utf8.fromBytes(decryptedpostdata.data);
-        console.log(decryptedtext);
-        this.newdata = decryptedtext;
+  //   IronWeb.document.getDocumentIDFromBytes(encryptedimage).then(
+  //     (documentId) => IronWeb.document.decrypt(documentId, encryptedimage)
+  //   ).then(
+  //     (decryptedpostdata) => {
+  //       const decryptedtext = IronWeb.codec.utf8.fromBytes(decryptedpostdata.data);
+  //       console.log(decryptedtext);
+  //       this.newdata = decryptedtext;
 
 
-  });
+  // });
   
 
 

@@ -3,7 +3,7 @@
 <form [formGroup]="this" fxLayout="column" fxLayoutGap="32px" *wmContent="let msgs select 'settings-profile.form'">
 
   <!-- User name -->
-  <mat-form-field>
+  <!-- <mat-form-field>
     <mat-label>{{ msgs.userName?.label || 'Username' }}</mat-label>
     <input matInput formControlName="userName">
     <wm-icon matPrefix [icon]="msgs.userName?.icon"></wm-icon>
@@ -11,25 +11,25 @@
     <mat-error *ngIf="controls.userName.errors?.required">{{ msgs.userName?.errors?.required }}</mat-error>
     <mat-error *ngIf="controls.userName.errors?.pattern">{{ msgs.userName?.errors?.format }}</mat-error>
     <mat-error *ngIf="controls.userName.errors?.exists">{{ msgs.userName?.errors?.exists }}</mat-error>
-  </mat-form-field>
+  </mat-form-field> -->
 
   <!-- Full name -->
   <div fxLayout="row"fxLayout.lt-sm="column" fxLayoutGap="16px">
 
     <!-- First name -->
-    <mat-form-field fxFlex="50">
+    <!-- <mat-form-field fxFlex="50">
       <mat-label>{{ msgs.firstName?.label || 'First name' }}</mat-label>
       <input matInput formControlName="name" cdkFocusInitial>
       <wm-icon matPrefix [icon]="msgs.firstName?.icon"></wm-icon>
       <mat-error *ngIf="controls.name.errors?.required">{{ msgs.firstName?.errors?.required }}</mat-error>
-    </mat-form-field>
+    </mat-form-field> -->
 
     <!-- Last name -->
-    <mat-form-field fxFlex="50">
+    <!-- <mat-form-field fxFlex="50">
       <mat-label>{{ msgs.lastName?.label || 'Last name' }}</mat-label>
       <input matInput formControlName="lastName" cdkFocusInitial>
       <wm-icon matPrefix [icon]="msgs.lastName?.icon"></wm-icon>
-    </mat-form-field>
+    </mat-form-field> -->
 
   </div>
 

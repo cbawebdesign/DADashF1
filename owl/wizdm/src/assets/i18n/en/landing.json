@@ -1,6 +1,6 @@
 {
 
-  "background": { "url": "assets/img/too7.svg" },
+  "background": { "url": "assets/img/nn.svg" },
 
   "widgets": [
     {
@@ -88,6 +88,7 @@
           "description": "Click here to navigate to Distribution Letters 2021",
           "url": "explore/distribution2021"
         },
+        
         { 
           "icon": "fas:fa-swatchbook",
           "title": "Capital Calls 2021",
